@@ -11,4 +11,8 @@ module.exports = function(app) {
         res.render("index");
     })
 
+    app.get("/survey", function(req, res) {
+        res.render("survey");
+    })
+
 };
