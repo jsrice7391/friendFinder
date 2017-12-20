@@ -1,5 +1,5 @@
 #slidecontainer {
-    width: 40%;
+    width: 100%;
 }
 
 .slider {
@@ -43,4 +43,9 @@
 .hero h1 {
     padding-top: 10%;
     color: white
+}
+
+.question p {
+    font-size: 28px;
+    text-align: center;
 }
