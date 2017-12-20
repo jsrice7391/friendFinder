@@ -99,6 +99,7 @@ function get_Inputs() {
 $("#submit").on("click", function(e) {
     e.preventDefault();
     get_Inputs();
+    location.reload();
 });
 
 
@@ -116,12 +117,9 @@ function postIt() {
         type: "POST",
         dataType: "json",
         data: newFriend,
-        success: function(newFriend) {
-            alert(newFriend);
-        }
     }).then(function() {
         console.log("NAILED IT")
-        theInputs = [];
+
     });
 
 
