@@ -25,7 +25,17 @@ module.exports = function(app) {
     })
 
     app.post("/api/friends", function(req, res) {
-        users.push(req.body)
+        num_array = []
+        theAnswers = req.body.answers.split("");
+        for (let number in theAnswers) {
+            num_array.push(parseInt(theAnswers[number]))
+        }
+
+        users.push({
+            name: req.body.name,
+            photo: req.body.photo,
+            answers: num_array
+        })
     })
 
 

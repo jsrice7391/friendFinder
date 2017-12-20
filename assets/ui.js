@@ -83,33 +83,46 @@ tenth_out.oninput = function() {
 }
 
 
-var theInputs = [];
+var theInputs = "";
 
 
 function get_Inputs() {
     $("#survey .question input").each(function(question_val) {
-        theInputs.push($(this).val());
+        theInputs += parseInt($(this).val());
     })
     console.log(theInputs);
+    postIt();
 
 }
 
 
 $("#submit").on("click", function(e) {
     e.preventDefault();
-
     get_Inputs();
+});
 
 
-    // var newFriend = {
-    //     name: $("#name").val(),
-    //     photo: $("#photo_link").val(),
-    //     answers: [parseInt($("#myRange").val()), ]
-    // }
-    // $.ajax("/api/friends", {
-    //     type: POST,
-    //     data: newFriend
-    // }.then(function() {
-    //     console.log("created new plan");
-    // }))
-})
+
+function postIt() {
+    var newFriend = {
+        name: $("#name").val(),
+        photo: $("#photo_link").val(),
+        answers: theInputs,
+    };
+
+    console.log("Here is the new Friends answers", newFriend.answers)
+
+    $.ajax("/api/friends", {
+        type: "POST",
+        dataType: "json",
+        data: newFriend,
+        success: function(newFriend) {
+            alert(newFriend);
+        }
+    }).then(function() {
+        console.log("NAILED IT")
+        theInputs = [];
+    });
+
+
+}
