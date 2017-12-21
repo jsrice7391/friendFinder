@@ -49,3 +49,11 @@
     font-size: 28px;
     text-align: center;
 }
+
+footer {
+    height: 199px;
+}
+
+footer ul li {
+    display: block;
+}

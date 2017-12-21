@@ -95,32 +95,55 @@ function get_Inputs() {
 
 }
 
-
-$("#submit").on("click", function(e) {
-    e.preventDefault();
-    get_Inputs();
-    location.reload();
-});
-
-
-
 function postIt() {
+
+
     var newFriend = {
         name: $("#name").val(),
         photo: $("#photo_link").val(),
         answers: theInputs,
     };
 
-    console.log("Here is the new Friends answers", newFriend.answers)
-
     $.ajax("/api/friends", {
         type: "POST",
         dataType: "json",
         data: newFriend,
-    }).then(function() {
-        console.log("NAILED IT")
+        timeout: 1000,
+        success: function(html) {
+            alert("Success Function")
+        },
+        complete: function() {
+            theInputs = [];
+            show_friend();
+        }
+    })
+}
 
+
+
+
+
+function show_friend() {
+    $.get("/api/friends", function(data) {
+        console.log(data);
+        alert(data);
+    })
+}
+
+
+$(document).ready(function() {
+
+
+
+    $("#survey").validate();
+
+
+    $("#submit").on("click", function(e) {
+        e.preventDefault();
+        get_Inputs();
     });
 
 
-}
+
+
+});
