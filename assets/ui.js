@@ -126,13 +126,19 @@ function postIt() {
 function show_friend() {
     $.get("/api/friends", function(data) {
         console.log(data);
-        alert(data);
+        $("#myModal").modal("show");
+        $(".modal-body").html("<h1>LOVE THIS </h1>")
     })
 }
 
 
 $(document).ready(function() {
 
+
+
+    $("#modal").on("click", function() {
+        console.log("CLICKED")
+    })
 
 
     $("#survey").validate();
