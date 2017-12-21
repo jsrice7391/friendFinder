@@ -96,19 +96,10 @@ function get_Inputs() {
 }
 
 function postIt() {
-
-
     var score = 0;
-
     for (let num in theInputs) {
         score += parseInt(theInputs[num]);
     }
-
-    console.log("This is the score: " + score)
-
-
-
-
     var newFriend = {
         name: $("#name").val(),
         photo: $("#photo_link").val(),
@@ -136,8 +127,20 @@ function postIt() {
 
 
 function show_friend() {
+    var diffs = [];
     $.get("/api/friends", function(data) {
-        console.log(data);
+        the_diffs = [];
+
+        current_user_score = data[data.length - 1].score;
+
+        for (let user in data) {
+            the_diffs.push(current_user_score - data[user].score)
+        }
+
+
+
+        console.log(max(the_diffs));
+
         $("#myModal").modal("show");
         $(".modal-body").html("<h1>LOVE THIS </h1>")
     })
