@@ -98,10 +98,22 @@ function get_Inputs() {
 function postIt() {
 
 
+    var score = 0;
+
+    for (let num in theInputs) {
+        score += parseInt(theInputs[num]);
+    }
+
+    console.log("This is the score: " + score)
+
+
+
+
     var newFriend = {
         name: $("#name").val(),
         photo: $("#photo_link").val(),
         answers: theInputs,
+        score: score
     };
 
     $.ajax("/api/friends", {

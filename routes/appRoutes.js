@@ -3,7 +3,7 @@ var path = require("path");
 var users = [{
     "name": "Ahmed",
     "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
-    "scores": [
+    "answers": [
         5,
         1,
         4,
@@ -14,7 +14,8 @@ var users = [{
         5,
         4,
         1
-    ]
+    ],
+    score: 32
 }];
 
 
@@ -34,7 +35,8 @@ module.exports = function(app) {
         users.push({
             name: req.body.name,
             photo: req.body.photo,
-            answers: num_array
+            answers: num_array,
+            score: parseInt(req.body.score)
         })
     })
 
