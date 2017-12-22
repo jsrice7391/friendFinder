@@ -131,40 +131,38 @@ function show_friend() {
     $.get("/api/friends", function(data) {
         the_diffs = [];
 
-        current_user_score = data[data.length - 1].score;
+        current_user = data[data.length - 1];
 
-        for (let user in data) {
-            the_diffs.push(current_user_score - data[user].score)
-        }
+        console.log(data.indexOf(current_user));
 
 
+        data.sort(function(a, b) {
+            return a.score - b.score;
+        });
 
-        console.log(max(the_diffs));
+        console.log(data);
+
+        var the_user = data.indexOf(current_user, data);
+        var next_user = data[the_user + 1];
 
         $("#myModal").modal("show");
-        $(".modal-body").html("<h1>LOVE THIS </h1>")
+        $(".modal-body").html("<h1>You have matched with : " + next_user.name + "</h1>");
+        $(".modal-body").append("<img src='" + next_user.photo + "'>")
     })
 }
 
 
 $(document).ready(function() {
 
-
-
     $("#modal").on("click", function() {
         console.log("CLICKED")
     })
 
-
     $("#survey").validate();
-
 
     $("#submit").on("click", function(e) {
         e.preventDefault();
         get_Inputs();
     });
-
-
-
 
 });

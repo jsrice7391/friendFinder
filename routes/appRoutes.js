@@ -2,7 +2,7 @@ var path = require("path");
 
 var users = [{
     "name": "Ahmed",
-    "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    "photo": "https://www.thelocal.de/userdata/images/article/fa6fd5014ccbd8f4392f716473ab6ff354f871505d9128820bbb0461cce1d645.jpg",
     "answers": [
         5,
         1,
@@ -20,6 +20,10 @@ var users = [{
 
 
 module.exports = function(app) {
+
+    app.get("/all-friends", function(req, res) {
+        res.render("all-users", { users: users });
+    })
 
     app.get("/api/friends", function(req, res) {
         res.json(users);
