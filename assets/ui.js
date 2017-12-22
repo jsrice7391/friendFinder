@@ -130,20 +130,18 @@ function show_friend() {
     var diffs = [];
     $.get("/api/friends", function(data) {
         the_diffs = [];
-
         current_user = data[data.length - 1];
-
         console.log(data.indexOf(current_user));
-
-
         data.sort(function(a, b) {
             return a.score - b.score;
         });
 
         console.log(data);
 
+        var rand = Math.floor(Math.random() * data.length) + 1
+
         var the_user = data.indexOf(current_user, data);
-        var next_user = data[the_user + 1];
+        var next_user = data[the_user + rand];
 
         $("#myModal").modal("show");
         $(".modal-body").html("<h1>You have matched with : " + next_user.name + "</h1>");
@@ -153,38 +151,39 @@ function show_friend() {
 
 
 $(document).ready(function() {
-    $("#commentForm").validate();
 
 
     $("#modal").on("click", function() {
         console.log("CLICKED")
     })
 
-    $("#survey").removeAttr("novalidate");
+
 
     $("#survey").validate({
         rules: {
             name: {
                 required: true,
-
             },
             photo_link: {
                 required: true,
-                url: true
             }
         },
         messages: {
             name: {
-                required: "Please enter a valid email"
+                required: "Please enter a valid name"
             }
+        },
+
+    });
+
+    var form = $("#survey");
+
+
+    $("#survey").submit(function(event) {
+        if (form.valid() == true) {
+            event.preventDefault();
+            get_Inputs();
         }
-    });
-
-
-
-    $("#submit").on("submit", function(e) {
-        e.preventDefault();
-        get_Inputs();
-    });
+    })
 
 });
