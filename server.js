@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const exphb = require("express-handlebars");
 
-var PORT = process.env.PORT | 8000;
+var PORT = process.env.PORT || 8000;
 
 
 // Allow boy barser to parse the data
