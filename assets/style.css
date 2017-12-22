@@ -35,7 +35,7 @@
 .hero {
     height: 600px;
     margin-top: -5%;
-    background-image: url("../assets/images/social.jpg");
+    background-image: url("https://s3.us-east-2.amazonaws.com/friend-finder333/social.jpg");
     background-size: 100%;
     background-position: bottom;
 }
