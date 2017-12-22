@@ -63,6 +63,11 @@ footer ul li {
     width: 300px;
 }
 
+.box {
+    float: left;
+    margin: 3.5%;
+}
+
 .box img {
     height: 280px;
     width: 280px;
