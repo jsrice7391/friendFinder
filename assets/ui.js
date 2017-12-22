@@ -153,14 +153,36 @@ function show_friend() {
 
 
 $(document).ready(function() {
+    $("#commentForm").validate();
+
 
     $("#modal").on("click", function() {
         console.log("CLICKED")
     })
 
-    $("#survey").validate();
+    $("#survey").removeAttr("novalidate");
 
-    $("#submit").on("click", function(e) {
+    $("#survey").validate({
+        rules: {
+            name: {
+                required: true,
+
+            },
+            photo_link: {
+                required: true,
+                url: true
+            }
+        },
+        messages: {
+            name: {
+                required: "Please enter a valid email"
+            }
+        }
+    });
+
+
+
+    $("#submit").on("submit", function(e) {
         e.preventDefault();
         get_Inputs();
     });

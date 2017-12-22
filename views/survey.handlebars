@@ -21,17 +21,12 @@
 
 <div class="container">
     <div class="questions">
-        <form id="survey">
-        <h4>Name (Required)</h4>
-        <input type="text" name id="name" class="form-control required" required>
-        <h4>Link to Photo Image (Required)</h4>
-        <input type="text" name id="photo_link" class="form-control required" required>
-        </form>
-    </div>
-
-
-    <div id="survey">
-
+    <form id="survey">
+           <h4><label for="cname">Name (required)</label>
+        <input id="name" name="name" minlength="4" type="text" class="form-control" required>
+    <h4><label for="cname">Photo Link (required)</label>
+    <input id="cname" name="ph" minlength="4" type="text" class="form-control"required>
+    
 <div class="question">
     <h3>How cool do you think you are?</h3>
     <div id="slidecontainer">
@@ -120,13 +115,10 @@
         <span id="tenth_slide"></span>
 </div>
 
-</div>
+    <input class="submit" type="submit" value="Submit" class="btn btn-primary" id="#submit">
 
-<button type="submit" class="btn btn-block btn-primary btn-lg" id="submit" data-toggle="modal" data-target="#exampleModal">
-    Submit
-</button>
-
+</h4>
+</form>
 
 
-</div>
 
