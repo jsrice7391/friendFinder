@@ -126,31 +126,41 @@ function postIt() {
 
 
 
+
 function show_friend() {
     var diffs = [];
-    $.get("/api/friends", function(data) {
-        the_diffs = [];
-        current_user = data[data.length - 1];
-        console.log(data.indexOf(current_user));
-        data.sort(function(a, b) {
-            return a.score - b.score;
-        });
+    $.ajax({
+        type: "GET",
+        url: "/api/friends",
+        successfunction(data) {
+            the_diffs = [];
+            current_user = data[data.length - 1];
+            console.log(data.indexOf(current_user));
+            data.sort(function(a, b) {
+                return a.score - b.score;
+            });
 
-        console.log(data);
+            console.log(data);
 
-        var rand = Math.floor(Math.random() * data.length) + 1
+            var rand = Math.floor(Math.random() * 3) + 1
 
-        var the_user = data.indexOf(current_user, data);
-        var next_user = data[the_user + rand];
+            var the_user = data.indexOf(current_user, data);
+            var next_user = data[the_user + rand];
 
-        $("#myModal").modal("show");
-        $(".modal-body").html("<h1>You have matched with : " + next_user.name + "</h1>");
-        $(".modal-body").append("<img src='" + next_user.photo + "'>")
+            $("#myModal").modal("show");
+            $(".modal-body").html("<h1>You have matched with : " + next_user.name + "</h1>");
+            $(".modal-body").append("<img src='" + next_user.photo + "'>")
+        }
     })
 }
 
 
 $(document).ready(function() {
+
+    // jQuery.validator.addMethod("isApic", function(value, element) {
+    //     if ()
+
+    // })
 
 
     $("#modal").on("click", function() {
