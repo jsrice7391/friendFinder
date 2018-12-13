@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "keywords": [],
   "author": "Justin Rice <jsrice7391@gmail.com>",
@@ -14,7 +16,9 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
-    "nodemon": "^1.14.2",
-    "path": "^0.12.7"
-  }
+    "nodemon": "^1.14.11",
+    "path": "^0.12.7",
+    "snyk": "^1.117.1"
+  },
+  "snyk": true
 }
