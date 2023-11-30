@@ -13,8 +13,8 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "express-handlebars": "^3.0.0",
-    "nodemon": "^1.14.2",
+    "express-handlebars": "^7.0.0",
+    "nodemon": "^1.14.11",
     "path": "^0.12.7"
   }
 }
